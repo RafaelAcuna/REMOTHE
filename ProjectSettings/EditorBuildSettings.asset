@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/InstruccionesCanoa.unity
     guid: 937fd43cb92c949418dd62a4aef61242
   - enabled: 1
+    path: Assets/Scenes/InstruccionesPortero.unity
+    guid: 2175eb9280e0a8841935dcd8e4ae78aa
+  - enabled: 1
     path: Assets/Scenes/InstruccionesEquilibrio.unity
     guid: 4087c59208a16654d838e601f7dd5569
   - enabled: 1

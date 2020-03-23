@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/IngresarNombre.unity
+    guid: b2833b1b2f47fcb43bf7a88ee547b1f6
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 28f42dcd58b52604c88bb67edf27847f
+  - enabled: 1
+    path: Assets/Scenes/MenuJugar.unity
+    guid: 18681bfb02b1bcc458c3eb4b0459f2fa
+  - enabled: 1
+    path: Assets/Scenes/InstruccionesCanoa.unity
+    guid: 937fd43cb92c949418dd62a4aef61242
+  - enabled: 1
+    path: Assets/Scenes/InstruccionesEquilibrio.unity
+    guid: 4087c59208a16654d838e601f7dd5569
+  - enabled: 1
+    path: Assets/Scenes/FinJuego.unity
+    guid: 8a7ea749f5f4e7b43971502343150fb5
   m_configObjects: {}

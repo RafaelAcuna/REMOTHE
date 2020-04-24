@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -10,7 +11,9 @@ public class CreateFile : MonoBehaviour
 
     void Start()
     {
-        string path = Application.dataPath + "/" + playerName.text + ".txt";
+        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/REMOTHE");
+
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/REMOTHE/" + playerName.text + ".txt";
 
         if(!File.Exists(path))
         {

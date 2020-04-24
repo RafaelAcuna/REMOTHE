@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class SoccerGame : MonoBehaviour
 {
@@ -9,8 +13,18 @@ public class SoccerGame : MonoBehaviour
     private Vector3[] referencePoints;
     private Rigidbody ballRigidbody;
 
+    public Text pointCounter;
+    public Text playerName;
+    public GameObject life1, life2, life3;
+
+    public SoundManager soundManager;
+    public StaticSessionInfo sessionInfo;
+
     public float timeElapsed;
     private float kickTime;
+
+    private int lives = 3;
+    private int points = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +53,7 @@ public class SoccerGame : MonoBehaviour
 
         if(kickTime <= 0.0f)
         {
+            soundManager.playBallKick();
             kickBall();
             kickTime = 3.0f;
         }
@@ -46,7 +61,7 @@ public class SoccerGame : MonoBehaviour
 
     private void kickBall()
     {
-        Vector3 kickDirection = (referencePoints[Random.Range(0, 5)] - ball.transform.position).normalized;
+        Vector3 kickDirection = (referencePoints[UnityEngine.Random.Range(0, 5)] - ball.transform.position).normalized;
         ballRigidbody.AddForce(kickDirection * (float)30.0, ForceMode.Impulse);
     }
 
@@ -55,5 +70,60 @@ public class SoccerGame : MonoBehaviour
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
         ball.transform.position = initialPosition;
+    }
+
+    public void addKickTime(float time)
+    {
+        kickTime += time;
+    }
+
+    public void addPoints()
+    {
+        soundManager.playCelebration();
+        points += 250;
+        pointCounter.text = points.ToString();
+    }
+
+    public void loseLife()
+    {
+        lives--;
+        if(lives == 2)
+        {
+            soundManager.playLifeLost();
+            life1.SetActive(false);
+        }
+        else if(lives == 1)
+        {
+            soundManager.playLifeLost();
+            life2.SetActive(false);
+        }
+        else
+        {
+            life3.SetActive(false);
+            writeSessionInfo();
+            StartCoroutine(endGame());
+        }
+    }
+
+    private void writeSessionInfo()
+    {
+        sessionInfo.updateInfo(points, timeElapsed);
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/REMOTHE/" + playerName.text + ".txt";
+
+        if (File.Exists(path))
+        {
+            StreamWriter sw = File.AppendText(path);
+            sw.WriteLine(DateTime.Now.ToString().Split(' ')[0] + "-" + timeElapsed);
+            sw.Close();
+        }
+    }
+
+    private IEnumerator endGame()
+    {
+        soundManager.playGameOver();
+
+        yield return new WaitForSeconds(1.0f);
+
+        SceneManager.LoadScene("FinJuego");
     }
 }

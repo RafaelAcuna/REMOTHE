@@ -37,7 +37,7 @@ public class UpdateStatsGraph : MonoBehaviour
 
         foreach(int val in values)
         {
-            chartManager.AddNewBar(0, 100, val, true);
+            chartManager.AddNewBar(0, 60, (int)Math.Ceiling((float)(val/60)), true);
         }
     }
 }

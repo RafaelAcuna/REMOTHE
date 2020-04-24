@@ -8,7 +8,9 @@ public class SoccerGoalCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
-        gameScript.stopBall();
+        if(other.tag == "Ball")
+        {
+            gameScript.stopBall();
+        }
     }
 }

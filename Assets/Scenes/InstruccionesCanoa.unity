@@ -969,6 +969,8 @@ MonoBehaviour:
   netHit: {fileID: 0}
   gloveCatch: {fileID: 0}
   celebration: {fileID: 0}
+  splash: {fileID: 0}
+  collect: {fileID: 0}
 --- !u!82 &661446713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2243,6 +2245,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 661446711}
+        m_MethodName: doChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Canoa
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1921639498

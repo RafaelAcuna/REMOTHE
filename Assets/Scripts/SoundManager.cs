@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip netHit;
     public AudioClip gloveCatch;
     public AudioClip celebration;
+    public AudioClip splash;
+    public AudioClip collect;
 
     public void playClick()
     {
@@ -47,5 +49,15 @@ public class SoundManager : MonoBehaviour
     public void playCelebration()
     {
         source.PlayOneShot(celebration);
+    }
+
+    public void playSplash()
+    {
+        source.PlayOneShot(splash);
+    }
+
+    public void playCollect()
+    {
+        source.PlayOneShot(collect);
     }
 }

@@ -6,26 +6,6 @@ public class CanoeBoatCheck : MonoBehaviour
 {
     public CanoeGame gameScript;
 
-    private Vector3 targetPosition;
-    private float targetDistance;
-
-    private float speed = 2;
-
-    private void Update()
-    {
-        if (Input.GetKey("a") && transform.localPosition.x > -8.0f)
-        {
-            transform.Rotate(new Vector3(0, 0, -0.1f));
-            transform.Translate(-Vector3.right * speed * Time.deltaTime);
-        }
-
-        if (Input.GetKey("d") && transform.localPosition.x < 8.0f)
-        {
-            transform.Rotate(new Vector3(0, 0, 0.1f));
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         switch(other.tag)
@@ -33,6 +13,7 @@ public class CanoeBoatCheck : MonoBehaviour
             case "Obstacle":
                 gameScript.loseLife();
                 break;
+
             case "Fish":
                 gameScript.addPoints(250);
                 break;

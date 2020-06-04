@@ -418,7 +418,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 3.626
   m_canvasRenderer: {fileID: 141947666}
   m_TextComponent: {fileID: 1109258803}
   m_materialReferenceIndex: 1
@@ -1535,6 +1535,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2099871338}
+        m_MethodName: doChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Equilibrio
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1930603669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,6 +1771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a1d45d45a7c114d8eaffa9924c5526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgSource: {fileID: 0}
+  bgClip: {fileID: 0}
   source: {fileID: 2099871339}
   click: {fileID: 8300000, guid: d357c38e84a114044b9199b59c9f4b94, type: 3}
   lifeLost: {fileID: 0}
@@ -1768,3 +1781,5 @@ MonoBehaviour:
   netHit: {fileID: 0}
   gloveCatch: {fileID: 0}
   celebration: {fileID: 0}
+  splash: {fileID: 0}
+  collect: {fileID: 0}

@@ -17,7 +17,10 @@ public class CanoeGame : MonoBehaviour
     public GameObject life1, life2, life3;
 
     public SoundManager soundManager;
+    public CanoeKinectManager kinectManager;
     public StaticSessionInfo sessionInfo;
+
+    public GameObject pausePanel;
 
     public float timeElapsed;
     private float spawnTime;
@@ -45,13 +48,18 @@ public class CanoeGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("escape"))
+        {
+            pauseGame();
+        }
+
         timeElapsed += Time.deltaTime;
         spawnTime -= Time.deltaTime;
 
         if (spawnTime <= 0.0f)
         {
             spawnObject();
-            spawnTime = 3.0f;
+            spawnTime = 2.5f;
         }
     }
 
@@ -121,10 +129,33 @@ public class CanoeGame : MonoBehaviour
 
     private IEnumerator endGame()
     {
+        kinectManager.destroyInstance();
         soundManager.playGameOver();
 
         yield return new WaitForSeconds(1.0f);
 
         SceneManager.LoadScene("FinJuego");
+    }
+
+    private void pauseGame()
+    {
+        Time.timeScale = 0;
+
+        pausePanel.SetActive(true);
+    }
+
+    public void unPauseGame()
+    {
+        Time.timeScale = 1;
+
+        pausePanel.SetActive(false);
+    }
+
+    public void pauseEndGame()
+    {
+        Time.timeScale = 1;
+        kinectManager.destroyInstance();
+
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }

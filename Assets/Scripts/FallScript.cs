@@ -10,6 +10,6 @@ public class FallScript : MonoBehaviour
     void Update()
     {
         Transform transform = GetComponent<Transform>();
-        transform.position = new Vector3(transform.position.x, transform.position.y - velocity);
+        transform.position = new Vector3(transform.position.x, transform.position.y - (velocity * Time.deltaTime));
     }
 }

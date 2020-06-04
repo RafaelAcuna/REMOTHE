@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public AudioSource bgSource;
+    public AudioClip bgClip;
+
     public AudioSource source;
 
     public AudioClip click;
@@ -15,6 +18,15 @@ public class SoundManager : MonoBehaviour
     public AudioClip celebration;
     public AudioClip splash;
     public AudioClip collect;
+
+    public void Start()
+    {
+        if(bgClip != null)
+        {
+            bgSource.clip = bgClip;
+            bgSource.Play();
+        }
+    }
 
     public void playClick()
     {

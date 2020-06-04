@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 3.626
   m_canvasRenderer: {fileID: 1409396892}
   m_TextComponent: {fileID: 413646978}
   m_materialReferenceIndex: 1
@@ -2244,6 +2244,8 @@ MonoBehaviour:
   netHit: {fileID: 0}
   gloveCatch: {fileID: 0}
   celebration: {fileID: 0}
+  splash: {fileID: 0}
+  collect: {fileID: 0}
 --- !u!1 &1866504982
 GameObject:
   m_ObjectHideFlags: 0

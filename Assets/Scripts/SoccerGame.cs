@@ -18,6 +18,7 @@ public class SoccerGame : MonoBehaviour
     public GameObject life1, life2, life3;
 
     public SoundManager soundManager;
+    public SoccerKinectManager kinectManager;
     public StaticSessionInfo sessionInfo;
 
     public float timeElapsed;
@@ -25,6 +26,8 @@ public class SoccerGame : MonoBehaviour
 
     private int lives = 3;
     private int points = 0;
+
+    public GameObject pausePanel;
     
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,11 @@ public class SoccerGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown("escape"))
+        {
+            pauseGame();
+        }
+
         timeElapsed += Time.deltaTime;
         kickTime -= Time.deltaTime;
 
@@ -120,10 +128,33 @@ public class SoccerGame : MonoBehaviour
 
     private IEnumerator endGame()
     {
+        kinectManager.destroyInstance();
         soundManager.playGameOver();
 
         yield return new WaitForSeconds(1.0f);
 
         SceneManager.LoadScene("FinJuego");
+    }
+
+    private void pauseGame()
+    {
+        Time.timeScale = 0;
+
+        pausePanel.SetActive(true);
+    }
+
+    public void unPauseGame()
+    {
+        Time.timeScale = 1;
+
+        pausePanel.SetActive(false);
+    }
+
+    public void pauseEndGame()
+    {
+        Time.timeScale = 1;
+        kinectManager.destroyInstance();
+
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }
